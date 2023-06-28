@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title><%= title %></title>
+    <%- include('../partials/head'); %>
+    <script src="/javascripts/caisse.js"></script>
+</head>
+<body>
+<%- include('../partials/header', title='Caisse'); %>
+<main>
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center">
+        <h1><%= title %></h1>
+        <button
+                class="btn btn-outline-secondary"
+                type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#calculettePartial"
+                aria-controls="calculettePartial"
+                style="height: 6.5vh">
+            Calculatrice
+        </button>
+    </div>
+    <div class="caisse-page-container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Qté</th>
+                <th scope="col">Prix unitaire</th>
+                <th scope="col">Sous-total</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="paiement-container">
+
+            <button class="btn btn-outline-secondary">Espèce</button>
+            <button class="btn btn-outline-secondary">Chèque</button>
+            <button class="btn btn-outline-secondary">CB</button>
+            <button class="btn btn-outline-secondary">PayUTC</button>
+            <button class="btn btn-outline-secondary">Compte Assos</button>
+            <button class="btn btn-outline-secondary">Dépense interne</button>
+            <hr>
+            <button class="btn btn-outline-secondary">Solde PayUTC</button>
+            <button class="btn btn-outline-secondary">Solde SafeQ</button>
+        </div>
+        <%- include('../partials/calculette') %>
+    </div>
+</main>
+</body>
+</html>
