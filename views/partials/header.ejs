@@ -1,38 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fcfcfc;">
+    <div class="container-fluid" href="/">
+      <a class="navbar-brand"><img src="/images/head.png" class="polar-logo">Le Polar</a>
 
-<nav class="navbar navbar-expand-sm navbar-light bg-color-polar">
-    <a class="navbar-brand" href="/">
-        <img src="/images/head.png" style="width: 4vw"/>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/caisse/">Caisse</a>
+      </button>
+
+      <div class="navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item hov">
+                <a class="f-f nav-link el-accueil" aria-current="page" href="/">Accueil</a>
+              </li>
+          <li class="nav-item">
+            <div class="separator"></div>
+          </li>
+          <li class="nav-item hov">
+            <a class="f-f nav-link" aria-current="page" href="/caisse/">Caisse</a>
+          </li>
+          <li class="nav-item hov">
+            <a class="f-f nav-link" aria-current="page" href="/ventes/">Ventes</a>
+          </li>
+          <li class="nav-item dropdown hov">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Poster</a></li>
+                <li><a class="dropdown-item" href="#">Annale</a></li>
+                <li><a class="dropdown-item" href="#">Billeterie</a></li>
+                <li><a class="dropdown-item" href="#">Badge</a></li>
+                <li><a class="dropdown-item" href="#">Compte association</a></li>
+            </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/posters/">Posters</a>
+          <li class="nav-item dropdown hov">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Locations
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Vidéoprojecteurs</a></li>
+                <li><a class="dropdown-item" href="#">Machines à raclette</a></li>
+                <li><a class="dropdown-item" href="#">Manuels</a></li>
+            </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/ventes/">Ventes</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Locations
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Vidéoprojecteurs</a></li>
-                    <li><a class="dropdown-item" href="#">Machines à raclette</a></li>
-                    <li><a class="dropdown-item" href="#">Manuels</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
+            <li class="nav-item hov">
                 <a class="nav-link" href="#">Wiki</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/contacts/">Contacts</a>
+          <li class="nav-item">
+            <div class="separator"></div>
+          </li>
+          <li class="nav-item dropdown hov unlogged">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Connexion
+            </a>
+            <ul class="dropdown-menu hov" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Connexion CAS</a></li>
+                <li><a class="dropdown-item" href="#">Extérieur</a></li>
+            </ul>
             </li>
+          <li class="nav-item hov logged">
+            <a class="f-f nav-link" href="#">Mon Profil</a>
+          </li>
+          <li class="nav-item hov logged">
+            <a class="f-f nav-link login-item" href="/users/logout">Se déconnecter</a>
+          </li>
         </ul>
+      </div>
     </div>
-</nav>
+  </nav>
