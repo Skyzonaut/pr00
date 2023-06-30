@@ -5,11 +5,43 @@
 <head>
     <title><%= title %></title>
     <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/stylesheets/css/contact.css">
 </head>
 <body>
 <%- include('../partials/header', title='Contacts'); %>
 <main>
-    <h1><%= title %></h1>
+    <div class="wrapper">
+        <div class="title">
+          Comment nous contacter ?
+        </div>
+        <p>
+            Envoyez nous un mail via le formulaire de contact ci-dessous ou passez nous voir au local FE008 ! Si vous avez un compte sur le site du Polar, connectez-vous pour accéder directement à la Hotline.        </p>
+        </p>
+        <div class="title">
+            Formulaire
+          </div>
+        <p>
+            Un problème ? Une suggestion ? Envoyez-nous un mail via ce formulaire de contact !
+        </p>
+        <form action="organization_form/request" method="POST" class="form">
+          <div class="inputfield">
+            <label>Votre courriel</label>
+            <input name="email" type="text" class="input">
+          </div>
+          <div class="inputfield">
+            <label>Sujet</label>
+            <input name="subject" type="number" class="input">
+          </div>
+          <div class="inputfield">
+            <label>Message</label>
+            <textarea name="message" class="textarea"></textarea>
+          </div>
+
+          <div class="inputfield">
+            <input type="submit" value="Soumettre" class="btn">
+          </div>
+        </form>
+      </div>
 </main>
 </body>
 </html>

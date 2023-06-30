@@ -10,6 +10,7 @@ var contactsRouter = require('./routes/contacts')
 var ventesRouter = require('./routes/ventes');
 var postersRouter = require('./routes/posters');
 var caisseRouter = require('./routes/caisse');
+var racletteRouter = require('./routes/raclette');
 
 
 var app = express();
@@ -30,6 +31,8 @@ app.use('/contacts', contactsRouter);
 app.use('/ventes', ventesRouter);
 app.use('/posters', postersRouter);
 app.use('/caisse', caisseRouter);
+app.use('/raclette', racletteRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
