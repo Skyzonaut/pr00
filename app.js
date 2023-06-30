@@ -11,6 +11,10 @@ var ventesRouter = require('./routes/ventes');
 var postersRouter = require('./routes/posters');
 var caisseRouter = require('./routes/caisse');
 var racletteRouter = require('./routes/raclette');
+var videoprojecteurRouter = require('./routes/videoprojecteur');
+var associationRouter = require('./routes/association');
+
+
 
 
 var app = express();
@@ -32,6 +36,11 @@ app.use('/ventes', ventesRouter);
 app.use('/posters', postersRouter);
 app.use('/caisse', caisseRouter);
 app.use('/raclette', racletteRouter);
+app.use('/videoprojecteur', videoprojecteurRouter);
+app.use('/association', associationRouter);
+
+
+
 
 
 // catch 404 and forward to error handler

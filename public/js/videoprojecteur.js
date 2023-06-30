@@ -138,26 +138,4 @@ function daysInMonth(iMonth, iYear) {
 $(".nb").on("click", function(){
     console.log($(this).parent()[0]);
     console.log($(this).parent()[0].getAttribute("data-date"));
-    $.post('raclette/update', 
-    { 
-      siren: $(formData).eq(0).val(),
-      nom: $(formData).eq(1).val(),
-      siege_social: $(formData).eq(2).val(),
-    }, 
-    function(){
-      location.reload(true);
-    });
 })
-
-$(".btn").on("click", function() {
-    var formData = $(this).parent().siblings().find('input');
-    $.post('organization_management/update', 
-    { 
-      siren: $(formData).eq(0).val(),
-      nom: $(formData).eq(1).val(),
-      siege_social: $(formData).eq(2).val(),
-    }, 
-    function(){
-      location.reload(true);
-    });
-  })
