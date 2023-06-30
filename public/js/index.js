@@ -1,0 +1,1 @@
+$('.el-accueil').addClass('active')

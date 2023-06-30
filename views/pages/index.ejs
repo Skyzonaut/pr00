@@ -5,11 +5,82 @@
 <head>
   <title><%= title %></title>
   <%- include('../partials/head'); %>
+  <link rel='stylesheet' href='/stylesheets/css/index.css' />
 </head>
   <body>
     <%- include('../partials/header', title='Accueil'); %>
     <main>
-      <h1><%= title %></h1>
+
+      <!-- About Section -->
+      <div class="about">
+        <div class="about-img">
+          <img src="images/polar-logo.png">
+        </div>
+        <div class="about-text">
+          <h1>Le Polar</h1><br>
+
+          <h5>Imprime ta propre histoire</h5><br>
+          <p>Le Polar est une association de service aux étudiants créée en 1978.</p>
+          
+          <p>De son vrai nom Promotion des Œuvres Livresques Au Rabais, le Polar est entièrement géré par des étudiants. L'équipe est composée de plus de 40 personnes qui permettent au Polar d'être ouvert de 9h à 18h15 toute la semaine. À ceux-ci s'ajoutent les responsables des différents secteurs et les membres du bureau.
+            Le détail de la Dream Team du Polar est disponible dans la rubrique "L'équipe" dans le menu en haut à droite.
+          </p>
+          <a href="#">En savoir plus...</a>
+        </div>
+      </div>
+        
+      <hr>
+
+      <div class="emploi-temps">
+        <h1>Horaires d'ouverture</h1>
+        <div>
+          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQCBDKvhqmLmsFcXpfnh_5S-5-_qEYcgZOz8Y5JzXxCB73-A9Ks89D676i96gaLSMmqEEdi8EsSQ6cR/pubhtml?gid=0&amp;single=true" style="width:100%;height:350px;margin:0px;padding:0px;"></iframe>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- Trombi Section -->
+      <div class="trombi">
+        <h1>Meet the team</h1>
+        <div>
+          <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRHWz8TmiIZV1PzfNr_c0Zgn-ZB_gmSKWVjJjV80pPPVgAZWgJWRXER1FHaCqQpeg/embed?start=true&amp;loop=false&amp;delayms=3000" frameborder="0" width="100%" height="1160" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        </div>
+      </div>
+
+      <hr>  
+
+      <!-- link section -->
+      <div class="container">
+
+        <a href="#" class="button">
+          <div class="button__line"></div>
+          <div class="button__line"></div>
+          <span class="button__text">Imprimer un poster</span>
+          <div class="button__drow1"></div>
+          <div class="button__drow2"></div>
+        </a>
+
+        <a href="#" class="button">
+          <div class="button__line"></div>
+          <div class="button__line"></div>
+          <span class="button__text">Louer une machine à raclette</span>
+          <div class="button__drow1"></div>
+          <div class="button__drow2"></div>
+        </a>
+
+        <a href="#" class="button">
+          <div class="button__line"></div>
+          <div class="button__line"></div>
+          <span class="button__text">Activer un compte asso</span>
+          <div class="button__drow1"></div>
+          <div class="button__drow2"></div>
+        </a>
+      
+      </div>
+
     </main>
+    <%- include('../partials/footer'); %>
   </body>
+  <script src="js/index.js"></script>
 </html>
