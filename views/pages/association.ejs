@@ -25,11 +25,15 @@
         <div class="title">
             Formulaire
           </div>
-        <form action="organization_form/request" method="POST" class="form">
+        <form action="association/request" method="POST" class="form">
+            <div class="inputfield">
+                <label>Adresse mail de l'association</label>
+                <input name="mailAsso" type="text" class="input">
+              </div>
             <div class="inputfield">
                 <label>Nom de l'association</label>
                 <div class="custom_select">
-                  <select name="domaine">
+                  <select name="asso">
                     <option value="">Choisir...</option>
                     <option value="202">Acoustic</option>
                     <option value="191">AP DDT</option>
@@ -127,37 +131,33 @@
                 </div>
               </div>
           <div class="inputfield">
-            <label>Adresse mail de l'association</label>
-            <input name="email_asso" type="text" class="input">
-          </div>
-          <div class="inputfield">
             <label>Nom et prénom du président</label>
-            <input name="name" type="text" class="input">
+            <input name="president" type="text" class="input">
           </div>
           <div class="inputfield">
             <label>Adresse mail du président</label>
-            <input name="email" type="text" class="input">
+            <input name="mailPresident" type="text" class="input">
           </div>
           <div class="inputfield">
             <label>Téléphone du président</label>
-            <input name="number" type="number" class="input">
+            <input name="telPresident" type="number" class="input">
           </div>
           <div class="inputfield">
             <label>Nom et prénom du trésorier</label>
-            <input name="name" type="text" class="input">
+            <input name="tresorier" type="text" class="input">
           </div>
           <div class="inputfield">
             <label>Adresse mail du trésorier</label>
-            <input name="email" type="text" class="input">
+            <input name="mailTresorier" type="text" class="input">
           </div>
           <div class="inputfield">
             <label>Téléphone du trésorier</label>
-            <input name="number" type="number" class="input">
+            <input name="telTresorier" type="number" class="input">
           </div>
     
           <div class="inputfield">
             <label>Mot de passe souhaité</label>
-            <input name="pw" type="password" class="input">
+            <input name="motDePasse" type="password" class="input">
           </div>
     
           <div class="inputfield">
