@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title><%= title %></title>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/stylesheets/css/association.css">
+    <link rel='stylesheet' href='/stylesheets/css/index.css' />
+</head>
+<body>
+<%- include('../partials/header', title='Posters'); %>
+<main>
+    <div class="wrapper">
+        <div class="title">
+          Réactivation d'un compte association
+        </div>
+        <p>
+            Chaque semestre, les comptes assos doivent être réactivés. Pour cela, choisissez votre association dans la liste suivante et renseignez tous les champs.
+        </p>
+        <p>
+            Cette page permet de réactiver un compte existant. Pour créer le compte d'une nouvelle association, vous devez vous rendre au Polar et rencontrer un membre du Bureau.
+        </p>
+       
+        <div class="title">
+            Formulaire
+          </div>
+        <form action="association/request" method="POST" class="form">
+            <div class="inputfield">
+                <label>Adresse mail de l'association</label>
+                <input name="mailAsso" type="text" class="input">
+              </div>
+            <div class="inputfield">
+                <label>Nom de l'association</label>
+                <div class="custom_select">
+                  <select name="asso">
+                    <option value="">Choisir...</option>
+                    <option value="202">Acoustic</option>
+                    <option value="191">AP DDT</option>
+                    <option value="204">AP53 - UTEAM</option>
+                    <option value="199">Avocarotte</option>
+                    <option value="232">Baignoires</option>
+                    <option value="228">BDA ESCOM</option>
+                    <option value="241">BDH ESCOM</option>
+                    <option value="149">BDS</option>
+                    <option value="241">Boul'ut</option>
+                    <option value="18">cabaret Etudiant</option>
+                    <option value="86">Cac'carotte</option>
+                    <option value="79">CEE UTC</option>
+                    <option value="15">Comet</option>
+                    <option value="37">Comutec</option>
+                    <option value="205">Cook'utc</option>
+                    <option value="244">Divergence</option>
+                    <option value="73">EDI</option>
+                    <option value="145">Elus Cevu</option>
+                    <option value="223">Elus GP</option>
+                    <option value="233">Elus GSU</option>
+                    <option value="240">Elus IM</option>
+                    <option value="227">Escap'UT</option>
+                    <option value="41">Espace Citoyen</option>
+                    <option value="17">Esperanto</option>
+                    <option value="56">Etusexy</option>
+                    <option value="30">Etuville</option>
+                    <option value="129">Fablab UTC</option>
+                    <option value="192">Fédé C</option>
+                    <option value="206">Fête des Partiels</option>
+                    <option value="155">Find utc</option>
+                    <option value="239">Formul'UT</option>
+                    <option value="229">Forum de l'Ingénirie Durable</option>
+                    <option value="11">Graf</option>
+                    <option value="255">Graill'UT</option>
+                    <option value="168">Hackaton</option>
+                    <option value="158">Handi'UTC</option>
+                    <option value="248">Heisenberg'UT</option>
+                    <option value="219">Il était une fois une usine</option>
+                    <option value="130">Integ fev'</option>
+                    <option value="12">ISF</option>
+                    <option value="249">Jesse'UT</option>
+                    <option value="20">Junior UTC</option>
+                    <option value="172">La conquête du pain</option>
+                    <option value="203">Le CID</option>
+                    <option value="207">Light Up City</option>
+                    <option value="226">MP03 Serious Game</option>
+                    <option value="214">MUT'TC</option>
+                    <option value="235">NASA</option>
+                    <option value="44">Numeo</option>
+                    <option value="243">Nutrition</option>
+                    <option value="197">On veut durable</option>
+                    <option value="117">Orion</option>
+                    <option value="25">OUTcoming</option>
+                    <option value="194">Picasoft</option>
+                    <option value="209">Pics'Art</option>
+                    <option value="71">PMDE</option>
+                    <option value="220">Polar</option>
+                    <option value="251">PolarTest</option>
+                    <option value="254">PolarTest2</option>
+                    <option value="193">Prend ton pouce</option>
+                    <option value="135">RED²</option>
+                    <option value="111">Rhizome</option>
+                    <option value="256">Run'UT</option>
+                    <option value="186">Sciences égales</option>
+                    <option value="257">Services des stages</option>
+                    <option value="34">SiMDE</option>
+                    <option value="32">ski utc</option>
+                    <option value="250">Skyler'UT</option>
+                    <option value="81">Soleils en Inde</option>
+                    <option value="258">Solidaire</option>
+                    <option value="100">Supporter UTC</option>
+                    <option value="26">Team UTeCia</option>
+                    <option value="153">TED utc</option>
+                    <option value="253">Test33</option>
+                    <option value="230">Tournoi de Water-Polo UTC</option>
+                    <option value="118">Tremplin UTC</option>
+                    <option value="185">Tropik'Utc</option>
+                    <option value="147">TUC</option>
+                    <option value="33">UT'Africa</option>
+                    <option value="262">UT'Escape</option>
+                    <option value="236">UT'Race</option>
+                    <option value="165">UTC - AP Morpho Senlis p15</option>
+                    <option value="180">UTC - Service des Stages</option>
+                    <option value="166">UTCiel</option>
+                    <option value="245">UTCiel</option>
+                    <option value="259">UTCode</option>
+                    <option value="35">UTCoupe</option>
+                    <option value="260">Utérus</option>
+                    <option value="136">Vielles Pipettes</option>
+                    <option value="261">Work & Chill</option>
+                    <option value="211">[INTERNE] Imprimante A17</option>
+
+                  </select>
+                </div>
+              </div>
+          <div class="inputfield">
+            <label>Nom et prénom du président</label>
+            <input name="president" type="text" class="input">
+          </div>
+          <div class="inputfield">
+            <label>Adresse mail du président</label>
+            <input name="mailPresident" type="text" class="input">
+          </div>
+          <div class="inputfield">
+            <label>Téléphone du président</label>
+            <input name="telPresident" type="number" class="input">
+          </div>
+          <div class="inputfield">
+            <label>Nom et prénom du trésorier</label>
+            <input name="tresorier" type="text" class="input">
+          </div>
+          <div class="inputfield">
+            <label>Adresse mail du trésorier</label>
+            <input name="mailTresorier" type="text" class="input">
+          </div>
+          <div class="inputfield">
+            <label>Téléphone du trésorier</label>
+            <input name="telTresorier" type="number" class="input">
+          </div>
+    
+          <div class="inputfield">
+            <label>Mot de passe souhaité</label>
+            <input name="motDePasse" type="password" class="input">
+          </div>
+    
+          <div class="inputfield">
+            <label>Confirmer le mot de passe</label>
+            <input name="cpw" type="password" class="input">
+          </div>
+
+          <div class="inputfield">
+            <input type="submit" value="Soumettre" class="btn">
+          </div>
+        </form>
+      </div>
+</main>
+</body>
+</html>

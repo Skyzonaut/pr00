@@ -5,11 +5,104 @@
 <head>
     <title><%= title %></title>
     <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/stylesheets/css/posters.css">
+    <link rel='stylesheet' href='/stylesheets/css/index.css' />
 </head>
 <body>
 <%- include('../partials/header', title='Posters'); %>
 <main>
-    <h1><%= title %></h1>
+    <div class="wrapper">
+        <div class="title">
+          Faire une demande d'impression de poster
+        </div>
+        <p>
+            Merci de bien vouloir faire attention au format et à la qualité de vos fichiers. Le format du fichier doit être cohérent avec le format d'impression demandé. Pour une impression de poster sans marge, veillez à ne pas placer d'élément important (logo par exemple) aux bords car il risquerait d'être légèrement coupé.
+        </p>
+        <p>
+            Un poster à faire imprimer ? Rien de plus simple, utilisez le formulaire suivant en remplissant correctement tous les champs. Vous recevrez une confirmation dès que le poster sera imprimé.
+        </p>
+        <p>
+            Les commandes doivent être payées avant que nous les imprimions. Vous pouvez payer en ligne par CB ou payutc ou payer au Polar.
+        </p>
+        <p>
+            Vous recevrez un mail de confirmation à réception de votre fichier puis un mail de notification lorsqu'il aura été imprimé. Les commandes sont en général réalisées sous 3 jours ouvrés, sauf rupture de stock ou problème matériel.
+        </p>
+        <p>
+            Le fichier envoyé doit être format pdf et ne doit pas dépasser 45Mo.
+        </p>
+        <p>
+            Attention : le site du polar est instable en ce moment et certains fichiers pourraient générer une erreur. Si c'est le cas, faites votre demande de poster directement par mail (polar@assos.utc.fr) avec votre fichier et paramètres d'impression.
+        </p>
+        <div class="title">
+            Formulaire
+          </div>
+        <form action="request" method="POST" class="form">
+          <div class="inputfield">
+            <label>Nom</label>
+            <input name="nom" type="text" class="input">
+          </div>
+          <div class="inputfield">
+            <label>Prénom</label>
+            <input name="prenom" type="text" class="input">
+          </div>
+          <div class="inputfield">
+            <label>Adresse mail UTC/ESCOM</label>
+            <input name="mail" type="text" class="input">
+          </div>
+    
+          <div class="inputfield">
+            <label>Quantité</label>
+            <div class="custom_select">
+              <select name="quantite">
+                <option value="">1</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+          <div class="inputfield">
+            <label>Format</label>
+            <div class="custom_select">
+              <select name="format">
+                <option value="">---</option>
+                <option value="Poster A0 papier glacé">Poster A0 papier glacé</option>
+                <option value="Poster A0 papier mat">Poster A0 papier mat</option>
+                <option value="Poster A1 papier glacé">Poster A1 papier glacé</option>
+                <option value="Poster A1 papier mat">Poster A1 papier mat</option>
+                <option value="Poster A2 papier glacé">Poster A2 papier glacé</option>
+                <option value="Poster A2 papier mat">Poster A2 papier mat</option>
+                <option value="Poster A3 papier glacé">Poster A3 papier glacé</option>
+                <option value="Poster A3 papier mat">Poster A3 papier mat</option>
+              </select>
+            </div>
+          </div>
+          <div class="inputfield">
+            <label>Marges</label>
+            <div class="custom_select">
+              <select name="marges">
+                <option value="">1</option>
+                <option value="Avec marges">Avec marges</option>
+                <option value="Sans marges">Sans marges</option>
+              </select>
+            </div>
+          </div>
+          <div class="inputfield">
+            <label>Date de retrait</label>
+            <input type="date" name="date" class="input">
+          </div>
+          <div class="inputfield">
+            <label for="myfile">Fichier à imprimer</label>
+            <input type="file" id="myfile" name="fichier" class="input">
+          </div>
+
+          <div class="inputfield">
+            <input type="submit" value="Soumettre" class="btn">
+          </div>
+        </form>
+      </div>
 </main>
 </body>
 </html>
