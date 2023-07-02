@@ -36,24 +36,24 @@
         <div class="title">
             Formulaire
           </div>
-        <form action="organization_form/request" method="POST" class="form">
+        <form action="request" method="POST" class="form">
           <div class="inputfield">
             <label>Nom</label>
             <input name="nom" type="text" class="input">
           </div>
           <div class="inputfield">
             <label>Prénom</label>
-            <input name="prenom" type="number" class="input">
+            <input name="prenom" type="text" class="input">
           </div>
           <div class="inputfield">
             <label>Adresse mail UTC/ESCOM</label>
-            <input name="email" type="text" class="input">
+            <input name="mail" type="text" class="input">
           </div>
     
           <div class="inputfield">
             <label>Quantité</label>
             <div class="custom_select">
-              <select name="domaine">
+              <select name="quantite">
                 <option value="">1</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -90,12 +90,12 @@
             </div>
           </div>
           <div class="inputfield">
-            <label>Date</label>
-            <input type="date" class="input">
+            <label>Date de retrait</label>
+            <input type="date" name="date" class="input">
           </div>
           <div class="inputfield">
             <label for="myfile">Fichier à imprimer</label>
-            <input type="file" id="myfile" name="myfile" class="input">
+            <input type="file" id="myfile" name="fichier" class="input">
           </div>
 
           <div class="inputfield">
