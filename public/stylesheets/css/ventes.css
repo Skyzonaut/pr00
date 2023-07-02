@@ -58,10 +58,6 @@ body {
     padding: 0 1.5rem;
     transition: opacity 0.1s linear 0s;
   }
-  .wrapper:hover .box:not(:hover)  {
-    filter: blur(1px);
-    opacity: 0.5;
-  }
   .box:hover  {
     transform: scale(1);
     transition:
@@ -313,3 +309,4 @@ body {
     align-items : center ;
     /*background-image: url("../../images/raclette.png");*/
 }
+

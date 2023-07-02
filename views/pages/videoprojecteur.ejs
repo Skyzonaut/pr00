@@ -6,7 +6,6 @@
     <title><%= title %></title>
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/stylesheets/css/videoprojecteur.css">
-    <link rel='stylesheet' href='/stylesheets/css/index.css' />
 </head>
 <body>
 <%- include('../partials/header', title='Raclette'); %>
@@ -14,20 +13,34 @@
     <div class="wrapper">
         <div class="title">
             Réservation du vidéoprojecteur
-          </div>
+        </div>
+
+        <div>
+            <h3>ATTENTION : le vidéoprojecteur se loue à la journée.</h3> 
+            <br>
+            <p>Il devra être retiré au Polar <span class="bold">après 12h30</span> le jour de la réservation et être ramené avant 12h30 le jour suivant
+                 (le lundi pour une location le vendredi). Il est à noter qu'<span class="bold">un chèque de caution de 600€</span> est exigée avant la location.
+                <br><br>
+                 2 vidéoprojecteurs peuvent être loués le même jour !
+            </p>
+        </div>
+
         <div class="container-calendar">
             <h3 id="monthAndYear"></h3>
             <div class="button-container-calendar">
                 <button id="previous" onclick="previous()">&#8249;</button>
                 <button id="next" onclick="next()">&#8250;</button>
             </div>
+
             <table class="table-calendar" id="calendar" data-lang="en">
                 <thead id="thead-month"></thead>
                 <tbody id="calendar-body"></tbody>
             </table>
+
             <div class="footer-container-calendar">
-    <label for="month">Jump To: </label>
-          <select id="month" onchange="jump()">
+            <label for="month">Jump To: </label>
+
+            <select id="month" onchange="jump()">
                      <option value=0>Jan</option>
                      <option value=1>Feb</option>
                      <option value=2>Mar</option>
@@ -40,10 +53,41 @@
                      <option value=9>Oct</option>
                      <option value=10>Nov</option>
                      <option value=11>Dec</option>
-                 </select>
-                 <select id="year" onchange="jump()"></select>       
+            </select>
+            <select id="year" onchange="jump()"></select>      
+
             </div>
         </div>
+
+        <div class="choice-container">
+
+            <div class="reservation-label">
+                <h3>Réservation pour le <span class="date">2023-7-3</span></h3>
+                <p>
+                Le prix de la location est actuellement de 5€ par jour.<br>
+                La location sera enregistrée pour <span class="user">lmenness</span> le <span class="date">2023-7-3</span>
+                </p>
+
+                <form>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="anime" name="hobby" />
+                      <label class="form-check-label" for="anime">J'accepte les
+                        <a class="location-condition" href="/pdf/CGL.pdf">Conditions Générales De Location De Matériel</a></label>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="container">
+                <a href="videoprojecteur/confirm" class="button disable">
+                    <div class="button__line"></div>
+                    <div class="button__line"></div>
+                    <span class="button__text">Réserver</span>
+                    <div class="button__drow1"></div>
+                    <div class="button__drow2"></div>
+                </a>
+            </div>
+        </div>
+
     </div>
 </main>
 </body>

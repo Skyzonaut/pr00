@@ -135,7 +135,18 @@ function daysInMonth(iMonth, iYear) {
     return 32 - new Date(iYear, iMonth, 32).getDate();
 }
 
-$(".nb").on("click", function(){
-    console.log($(this).parent()[0]);
-    console.log($(this).parent()[0].getAttribute("data-date"));
+$(".nb").on("click", function() {
+
+    $(".choice-container").css('display', 'flex')
+
+    var year = $(this).parent()[0].getAttribute("data-year")
+    var month = $(this).parent()[0].getAttribute("data-month")
+    var day = $(this).parent()[0].getAttribute("data-date")
+    $('.date').text(day + "/" + month + "/" + year)
+
+    $('.user').text('username')
+})
+
+$('.form-check > input').on('click', function() {
+    $('.button').toggleClass('disable')
 })
