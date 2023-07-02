@@ -68,7 +68,7 @@ function supprimerLigne(event) {
         } else {
             $("#table-article-caisse > tbody").children().last().remove();
             const tr = $('<tr></tr>')
-            for(let i = 0; i < 5; i++) {
+            for(let i = 0; i < 5; i++) {git
                 const td = $('<td><input class="input-tableau-caisse" type="text"/></td>');
                 tr.append(td);
             }
