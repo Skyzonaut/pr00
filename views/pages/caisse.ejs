@@ -5,24 +5,25 @@
 <head>
     <title><%= title %></title>
     <%- include('../partials/head'); %>
-    <script src="/javascripts/caisse.js"></script>
+    <script src="/js/caisse.js"></script>
+    <link rel='stylesheet' href='/stylesheets/css/index.css' />
 </head>
 <body>
 <%- include('../partials/header', title='Caisse'); %>
 <main>
-    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center">
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start">
         <h1><%= title %></h1>
-        <button
-                class="btn btn-outline-secondary"
-                type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#calculettePartial"
-                aria-controls="calculettePartial"
-                style="height: 6.5vh">
-            Calculatrice
-        </button>
+<!--        <button-->
+<!--                class="btn btn-outline-secondary"-->
+<!--                type="button" data-bs-toggle="offcanvas"-->
+<!--                data-bs-target="#calculettePartial"-->
+<!--                aria-controls="calculettePartial"-->
+<!--                style="height: 6.5vh">-->
+<!--            Calculatrice-->
+<!--        </button>-->
     </div>
-    <div class="caisse-page-container">
-        <table class="table">
+    <div class="caisse-page-container" id="tableau-caisse" onkeydown="ajouterLigne(event);supprimerLigne(event)">
+        <table class="table" id="table-article-caisse">
             <thead>
             <tr>
                 <th scope="col">Code</th>
@@ -34,23 +35,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
+                <tr>
+                    <td><input class="input-tableau-caisse" text=""/></td>
+                    <td><input class="input-tableau-caisse" text=""/></td>
+                    <td><input class="input-tableau-caisse" text=""/></td>
+                    <td><input class="input-tableau-caisse" text=""/></td>
+                    <td><input class="input-tableau-caisse" text=""/></td>
+                </tr>
             </tbody>
         </table>
         <div id="paiement-container">

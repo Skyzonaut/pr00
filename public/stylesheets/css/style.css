@@ -52,6 +52,11 @@ a {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;}
+
+.input-tableau-caisse {
+    border: none;
+    border-bottom: solid darkgrey 1px;
+}
 .caisse .gris {background-color: #f3f3f3;}
 .caisse .gris:hover{background: #d5d5d5;}
 .caisse .gris:active{ background: #777777;}
