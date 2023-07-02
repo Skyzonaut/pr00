@@ -10,26 +10,91 @@
 <body>
 <%- include('../partials/header', title='Ventes'); %>
 <main>
-    <h1>Produits</h1>
+    <h1>Notre Catalogue</h1>
+    <hr>
+    <!-- link section -->
+    <div class="container">
+
+        <a href="fournitures" class="button">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">Fournitures</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+        </a>
+
+        <a href="informatique" class="button">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">Informatique</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+        </a>
+
+        <a href="services" class="button">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">Services</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+        </a>
+
+        <a href="impressions" class="button">
+            <div class="button__line"></div>
+            <div class="button__line"></div>
+            <span class="button__text">Impressions</span>
+            <div class="button__drow1"></div>
+            <div class="button__drow2"></div>
+        </a>
+    
+    </div>
+
+    <hr>
+    <br>
+
     <div class="wrapper">
-    <div class="box">
-        <div class="product">
-        <span class="name">Calculatrice</span>
-        <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-        </div>
-    </div>
-    <div class="box">
-        <div class="product">
-        <span class="name">Cable</span>
-        <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-        </div>
-    </div>
-    <div class="box">
-        <div class="product">
-        <span class="name">Clé USB</span>
-        <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-        </div>
-    </div>
+
+        <% items.forEach((item)=> { %>
+            <% switch (item.Secteur) {
+                case 1 : %>
+                    <div class="box service">
+                        <div class="product">
+                        <span class="name"><%= item.Nom %></span>
+                        <span class="description"><%= item.PrixVente %> €</span>
+                        </div>
+                    </div>
+                    <% break;
+                
+                case 3 : %>
+                    <div class="box fourniture">
+                        <div class="product">
+                        <span class="name"><%= item.Nom %></span>
+                        <span class="description"><%= item.PrixVente %> €</span>
+                        </div>
+                    </div>
+                    <% break;
+
+                case 5 : %>
+                    <div class="box impression">
+                        <div class="product ">
+                        <span class="name"><%= item.Nom %></span>
+                        <span class="description"><%= item.PrixVente %> €</span>
+                        </div>
+                    </div>
+                    <% break;
+
+                case 7 : %>
+                    <div class="box info">
+                        <div class="product">
+                        <span class="name"><%= item.Nom %></span>
+                        <span class="description"><%= item.PrixVente %> €</span>
+                        </div>
+                    </div>
+                    <% break;
+
+            } %>
+        <% }) %>
+
     </div>
 </main>
 </body>
