@@ -5,7 +5,6 @@
     <title><%= title %></title>
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/stylesheets/css/ventes.css">
-    <link rel='stylesheet' href='/stylesheets/css/index.css'/>
 </head>
 <body>
 <%- include('../partials/header', title='Ventes'); %>
@@ -57,37 +56,45 @@
         <% items.forEach((item)=> { %>
             <% switch (item.Secteur) {
                 case 1 : %>
-                    <div class="box service" style="background-image: <%= item.Photo %>">
+                    <div class="box service">
                         <div class="product">
-                        <span class="name"><%= item.Nom %></span>
-                        <span class="description"><%= item.PrixVente %> €</span>
+                            <span class="name"><%= item.Nom %></span>
+                            <img src="/images/question-mark.png">
+                            <button>Acheter</button>
+                            <span class="description"><%= item.PrixVente %> €</span>
                         </div>
                     </div>
                     <% break;
                 
                 case 3 : %>
                     <div class="box fourniture">
-                        <div class="product" style="background-image: <%= item.Photo %>">
-                        <span class="name"><%= item.Nom %></span>
-                        <span class="description"><%= item.PrixVente %> €</span>
+                        <div class="product">
+                            <span class="name"><%= item.Nom %></span>
+                            <img src="/images/question-mark.png">
+                            <button>Acheter</button>
+                            <span class="description"><%= item.PrixVente %> €</span>
                         </div>
                     </div>
                     <% break;
 
                 case 5 : %>
-                    <div class="box impression" style="background-image: <%= item.Photo %>">
-                        <div class="product ">
-                        <span class="name"><%= item.Nom %></span>
-                        <span class="description"><%= item.PrixVente %> €</span>
+                    <div class="box impression">
+                        <div class="product">
+                            <span class="name"><%= item.Nom %></span>
+                            <img src="/images/question-mark.png">
+                            <button>Acheter</button>
+                            <span class="description"><%= item.PrixVente %> €</span>
                         </div>
                     </div>
                     <% break;
 
                 case 7 : %>
-                    <div class="box info" style="background-image: <%= item.Photo %>">
+                    <div class="box info">
                         <div class="product">
-                        <span class="name"><%= item.Nom %></span>
-                        <span class="description"><%= item.PrixVente %> €</span>
+                            <span class="name"><%= item.Nom %></span>
+                            <img src="/images/question-mark.png">
+                            <button>Acheter</button>
+                            <span class="description"><%= item.PrixVente %> €</span>
                         </div>
                     </div>
                     <% break;
