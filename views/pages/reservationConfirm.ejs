@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title><%= title %></title>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/stylesheets/css/confirm.css">
+</head>
+<body>
+<%- include('../partials/header', title='Raclette'); %>
+<main>
+    <div class="wrapper">
+        <div class="title">
+            Confirmation de votre réservation
+        </div>
+
+        <div class="main-container">
+            <h3>Vous avez réservé le <%= content %> </h3> 
+            <img src="../images/confirm.png">
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -26,9 +26,9 @@ var lang = calendar.getAttribute('data-lang');
 var months = "";
 var days = "";
 
-var monthDefault = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var monthDefault = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"];
 
-var dayDefault = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+var dayDefault = ["Dimanche", "Lundi", "Mardi", "Mecredi", "Jeudi", "Vendredi", "Samedi"];
 
 if (lang == "en") {
     months = monthDefault;
@@ -135,7 +135,18 @@ function daysInMonth(iMonth, iYear) {
     return 32 - new Date(iYear, iMonth, 32).getDate();
 }
 
-$(".nb").on("click", function(){
-    console.log($(this).parent()[0]);
-    console.log($(this).parent()[0].getAttribute("data-date"));
+$(".nb").on("click", function() {
+
+    $(".choice-container").css('display', 'flex')
+
+    var year = $(this).parent()[0].getAttribute("data-year")
+    var month = $(this).parent()[0].getAttribute("data-month")
+    var day = $(this).parent()[0].getAttribute("data-date")
+    $('.date').text(day + "/" + month + "/" + year)
+
+    $('.user').text('username')
+})
+
+$('.form-check > input').on('click', function() {
+    $('.button').toggleClass('disable')
 })

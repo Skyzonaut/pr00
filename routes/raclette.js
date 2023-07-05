@@ -6,4 +6,7 @@ router.get('/', function(req, res, next) {
     res.render("raclette", {title: "Raclette"});
 });
 
+router.get('/confirm', function(req, res, next) {
+    res.render("reservationConfirm", {title: "Confirm", content: "raclette"});
+});
 module.exports = router;

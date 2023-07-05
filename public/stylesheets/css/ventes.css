@@ -1,3 +1,126 @@
+@import "https://unpkg.com/open-props";
+
+* {
+  box-sizing: border-box;
+}
+
+/* buy button */
+
+button {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-6);
+    color: black;
+    background: rgb(255, 255, 255);
+    transform: translateY(calc(var(--y, 0) * 1%)) scale(var(--scale));
+    transition: transform 0.1s;
+    border-radius: 1rem;
+    border: 1px solid rgb(182, 181, 181);
+    height: 10%;
+    width: 90%;
+}
+
+button:hover {
+--y: -5;
+--scale: 1.02;
+--border-scale: 1.2;
+    border: 2px solid rgb(182, 181, 181);
+}
+
+button:active {
+--y: 5%;
+--scale: 0.9;
+--border-scale: 0.9, 0.8;
+}
+
+/* FONT */
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* NAVBAR */
+
+.navbar-brand {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+    width: fit-content;
+    padding-bottom: 0;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.navbar-brand > img {
+
+    width: 70px;
+    margin-right: 10px;
+}
+
+.navbar {
+    box-shadow: 0px 2px 3px lightgray;
+    padding-bottom: 0;
+}
+
+.navbar-collapse {
+    flex-grow: 0 !important; 
+}
+
+.navbar-main-spacer {
+    padding: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.hov:hover {
+    color: black;
+}
+
+.nav-item > a {
+    font-size: 0.95rem;
+}
+
+.login-item {
+    border-radius: 10px;
+    margin-right: 2px;
+}
+
+.separator {
+    border: 1px solid rgb(204, 204, 204);
+    width: 1px;
+    height: 33px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.el-accueil {
+    font-weight: bolder;
+    margin: 0;
+}
+
+.hov:hover {
+    border-bottom: solid 2px rgb(53, 53, 53);
+}
+
+.active {
+    border-bottom: solid 2px rgb(53, 53, 53);
+}
+
+/*MAIN*/
+
+main {
+    margin-top: 1%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 1%;
+}
+
 body {
     margin: 0;
   }
@@ -24,6 +147,10 @@ body {
     width: 15rem;
     height: 20rem;
     padding: 0 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     transition:
       transform 0.3s linear 0s,
       filter 0.5s linear 0.3s,
@@ -32,6 +159,10 @@ body {
   }
   .product {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
     border-radius: 0.2rem;
@@ -50,17 +181,12 @@ body {
     padding: 1rem 0.5rem;
   }
   .description {
-    position: absolute;
     bottom: 1rem;
     left: 0;
     right: 0;
     display: block;
     padding: 0 1.5rem;
     transition: opacity 0.1s linear 0s;
-  }
-  .wrapper:hover .box:not(:hover)  {
-    filter: blur(1px);
-    opacity: 0.5;
   }
   .box:hover  {
     transform: scale(1);
@@ -80,6 +206,11 @@ body {
     opacity: 1;
     transition: opacity 0.3s linear 0.75s;
   }
+
+.product > img {
+    height: 30%;
+    width: 50%;
+}
 
 /* BUTTON */
 
@@ -313,3 +444,4 @@ body {
     align-items : center ;
     /*background-image: url("../../images/raclette.png");*/
 }
+
