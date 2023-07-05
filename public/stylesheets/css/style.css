@@ -15,6 +15,19 @@ a {
     background-color: #ff9090;
 }
 
+#main-caisse-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start
+}
+
+#side-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .caisse-page-container {
     margin-top: 1vh;
     display: flex;
@@ -23,7 +36,12 @@ a {
     flex-direction: row;
     width: 100%;
     height: 60vh;
-    gap: 1vw;
+    gap: 5vw;
+
+}
+
+th {
+    white-space: nowrap;
 }
 
 #caisse-container {
@@ -55,7 +73,7 @@ a {
 
 .input-tableau-caisse {
     border: none;
-    border-bottom: solid darkgrey 1px;
+    border-bottom: solid #cbcbcb 2px;
 }
 .caisse .gris {background-color: #f3f3f3;}
 .caisse .gris:hover{background: #d5d5d5;}

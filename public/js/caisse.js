@@ -50,29 +50,57 @@
 //     }
 // }
 
+function calculerTotal() {
+    const body = $("#table-article-caisse > tbody");
+    let total = 0;
+    body.children().each(function(i) {
+        total += parseFloat($(this).children().last().children()[0].innerHTML.split(' '[0]))
+    })
+    console.log(total)
+    $("#prix-total-caisse")[0].innerHTML = total + " €";
+}
+function calculerSousTotal(el) {
+    const tr = $(el).parent().parent();
+    const sousTotal = tr.children().last().children().first()[0];
+    const qte = tr.children().eq(2).children().eq(0)[0].value;
+    const prix = tr.children().eq(3).children().eq(0)[0].value;
+    if(qte !== "" && prix !== "") {
+        sousTotal.innerHTML = `${parseFloat(qte) * parseFloat(prix)} €`;
+    }
+    else {
+        sousTotal.innerHTML = `0 €`;
+    }
+    calculerTotal();
+}
+
+let nbLigne = 0;
+
+function creerLigne() {
+    const tr = $(`<tr id="tr-${nbLigne}"></tr>`)
+        .append($(`<td><input class="input-tableau-caisse" id="code-${nbLigne}" type="text"/></td>`))
+        .append($(`<td><input class="input-tableau-caisse" id="nom-${nbLigne}" type="text"/></td>`))
+        .append($(`<td><input class="input-tableau-caisse" id="qte-${nbLigne}" onchange="calculerSousTotal(this)" type="number"/></td>`))
+        .append($(`<td><input class="input-tableau-caisse" id="prix-${nbLigne}" onchange="calculerSousTotal(this)" type="number" step="0.01"/></td>`))
+        .append($(`<td><div id="sous-total-${nbLigne}">0 €</div></td>`));
+    $("#table-article-caisse > tbody").append(tr);
+}
+
 function ajouterLigne(event) {
     if(event.keyCode === 13){
-        const tr = $('<tr></tr>')
-        for(let i = 0; i < 5; i++) {
-            const td = $('<td><input class="input-tableau-caisse" type="text"/></td>');
-            tr.append(td);
-        }
-        $("#table-article-caisse > tbody").append(tr);
+        nbLigne++;
+        creerLigne();
     }
 }
 
 function supprimerLigne(event) {
     if(event.keyCode === 46) {
-        if($("#table-article-caisse > tbody").children().length > 1) {
-            $("#table-article-caisse > tbody").children().last().remove();
+        const body = $("#table-article-caisse > tbody");
+        if(body.children().length > 1) {
+            nbLigne--;
+            body.children().last().remove();
         } else {
-            $("#table-article-caisse > tbody").children().last().remove();
-            const tr = $('<tr></tr>')
-            for(let i = 0; i < 5; i++) {git
-                const td = $('<td><input class="input-tableau-caisse" type="text"/></td>');
-                tr.append(td);
-            }
-            $("#table-article-caisse > tbody").append(tr);
+            body.children().last().remove();
+            creerLigne()
         }
     }
 }
