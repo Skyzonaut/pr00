@@ -5,6 +5,7 @@
     <title><%= title %></title>
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/stylesheets/css/ventes.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 <%- include('../partials/header', title='Ventes'); %>
@@ -14,7 +15,7 @@
     <!-- link section -->
     <div class="container">
 
-        <a href="fournitures" class="button">
+        <a href="fournitures?index=1" class="button">
             <div class="button__line"></div>
             <div class="button__line"></div>
             <span class="button__text">Fournitures</span>
@@ -22,7 +23,7 @@
             <div class="button__drow2"></div>
         </a>
 
-        <a href="informatique" class="button">
+        <a href="informatique?index=1" class="button">
             <div class="button__line"></div>
             <div class="button__line"></div>
             <span class="button__text">Informatique</span>
@@ -30,7 +31,7 @@
             <div class="button__drow2"></div>
         </a>
 
-        <a href="services" class="button">
+        <a href="services?index=1" class="button">
             <div class="button__line"></div>
             <div class="button__line"></div>
             <span class="button__text">Services</span>
@@ -38,7 +39,7 @@
             <div class="button__drow2"></div>
         </a>
 
-        <a href="impressions" class="button">
+        <a href="impressions?index=1" class="button">
             <div class="button__line"></div>
             <div class="button__line"></div>
             <span class="button__text">Impressions</span>
@@ -98,11 +99,30 @@
                         </div>
                     </div>
                     <% break;
-
             } %>
         <% }) %>
 
+
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#">...</a>
+            <% for(let i = from; i < to; i++) { %>
+                <% if(current == i) { %>
+                    <a class="active" href="?index=<%= i %>"><%= i %></a>
+                <% } else { %>
+                    <a href="?index=<%= i %>"><%= i %></a>
+                <% } %>
+            <% } %>
+            <a href="#">...</a>
+            <a href="#">&raquo;</a>
+        </div>
+
     </div>
 </main>
+    <% if(items) { %>
+        <script>
+            const itemList = <%- JSON.stringify(items) %>;
+        </script>
+    <% } %>
 </body>
 </html>
