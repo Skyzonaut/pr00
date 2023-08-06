@@ -36,7 +36,7 @@
             <tbody>
                 <tr id="tr-0">
                     <td><input class="input-tableau-caisse" id="code-0" type="text"/></td>
-                    <td><input class="input-tableau-caisse" id="nom-0" type="number"/></td>
+                    <td><input class="input-tableau-caisse" id="nom-0" type="text"/></td>
                     <td><input class="input-tableau-caisse" id="qte-0" onchange="calculerSousTotal(this)" type="number"/></td>
                     <td><input class="input-tableau-caisse" id="prix-0" onchange="calculerSousTotal(this)" type="number" step="0.01"/></td>
                     <td><div id="sous-total-0">0 €</div></td>
@@ -50,7 +50,7 @@
                         <tr><th>Total</th></tr>
                     </thead>
                     <tbody>
-                    <tr><td id="prix-total-caisse">0€</td></tr>
+                    <tr><td id="prix-total-caisse">0 €</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -64,6 +64,8 @@
                 <hr>
                 <button class="btn btn-outline-secondary">Solde PayUTC</button>
                 <button class="btn btn-outline-secondary">Solde SafeQ</button>
+                <hr>
+                <button class="btn btn-success">Imprimer Facture</button>
             </div>
         </div>
         <%- include('../partials/calculette') %>

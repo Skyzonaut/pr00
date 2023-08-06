@@ -50,6 +50,14 @@
 //     }
 // }
 
+const listArticles = fetch("/caisse/articles/")
+    .then(response => {
+        console.log(response)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+
 function calculerTotal() {
     const body = $("#table-article-caisse > tbody");
     let total = 0;
