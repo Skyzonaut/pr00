@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>  
+<head>
+    <title><%= title %></title>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/stylesheets/css/wiki.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+    <body>
+    <%- include('../partials/header', title='Wiki'); %>
+        <main>
+            <h1>Wiki</h1>
+            <hr>
+            <p>
+                <%= content %>
+            </p>
+            <a class="edit" href="#">&#10000;</a>
+            <a class="valid" href="#">&#10004;</a>
+        </main>
+
+        <script>
+            $('.edit').on('click', function() {
+                $('p').attr('contentEditable', function(attr) {
+                    return !attr;
+                })
+                $('.valid').attr('display', function(attr) {
+                    return attr == 'gone' ? 'block' : 'gone';
+                })
+            })
+
+            $('.valid').on('click', function() {
+                $.post("wiki/update", 
+                {
+                    content: $('p').text(),
+                    title: $()
+                },
+                function() {
+                    location.reload(true);
+                });
+            })
+        </script>
+    </body>
+ 
+</html>
