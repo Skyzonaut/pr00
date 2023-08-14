@@ -5,40 +5,51 @@
     <title><%= title %></title>
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/stylesheets/css/wiki.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
     <body>
     <%- include('../partials/header', title='Wiki'); %>
         <main>
             <h1>Wiki</h1>
-            <hr>
-            <p>
-                <%= content %>
-            </p>
-            <a class="edit" href="#">&#10000;</a>
-            <a class="valid" href="#">&#10004;</a>
+            <% content.forEach((item)=> { %>
+                <div>
+                    <hr>
+                    <h3><%= item.Name %></h3>
+                    <p>
+                        <%= item.Description %>
+                    </p>
+                    <div class="admin-btn hidden">
+                        <a class="edit" href="#">&#10000;</a>
+                        <a class="valid hidden" href="#">&#10004;</a>
+                    </div>
+                </div>
+            <% }) %>
         </main>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script>
             $('.edit').on('click', function() {
-                $('p').attr('contentEditable', function(attr) {
-                    return !attr;
-                })
-                $('.valid').attr('display', function(attr) {
-                    return attr == 'gone' ? 'block' : 'gone';
-                })
+                var p = $(this).parent().siblings('p')
+                if(p.attr('contentEditable')) {
+                    p.removeAttr('contentEditable')
+                } else {
+                    p.attr('contentEditable',true)
+                }
+                $(this).siblings('.valid').toggleClass("hidden");
             })
 
             $('.valid').on('click', function() {
                 $.post("wiki/update", 
                 {
-                    content: $('p').text(),
-                    title: $()
+                    content: $(this).parent().siblings('p').text(),
+                    title: $(this).parent().siblings('h3').text()
                 },
                 function() {
                     location.reload(true);
                 });
+
+                $(this).toggleClass("hidden");
+                $(this).parent().siblings('p').removeAttr('contentEditable')
             })
         </script>
     </body>

@@ -86,3 +86,7 @@ main {
     margin-right: 20%;
     margin-bottom: 1%;
 }
+
+.hidden {
+    display: none;
+}

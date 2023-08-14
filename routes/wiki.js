@@ -1,16 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var itemModel = require('../model/ventes.js')
+var wikiModel = require('../model/wiki.js')
 
 router.get('/', function(req, res, next) {
-    itemModel.read(req.query.title, function(result) {
+    wikiModel.readAll(function(result) {
         res.render('wiki', { title: "Wiki", content: result });
     })
 });
 
-router.get('/update', function(req, res, next) {
-    itemModel.update(req.body.title, req.body.content, function(result) {
-         res.render('wiki', { title: "Wiki", content: result});
+router.post('/update', function(req, res, next) {
+    wikiModel.update(req.body.title, req.body.content, function(result) {
+         return res.redirect('/wiki');
     })
 }); 
 
