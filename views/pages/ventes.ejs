@@ -102,6 +102,7 @@
             } %>
         <% }) %>
 
+        <div class="spacer"></div>
 
         <div class="pagination">
             <a href="#">&laquo;</a>
@@ -109,7 +110,7 @@
             <% for(let i = from; i < to; i++) { %>
                 <% if(current == i) { %>
                     <a class="active" href="?index=<%= i %>"><%= i %></a>
-                <% } else { %>
+                <% } else if(i > 0) { %>
                     <a href="?index=<%= i %>"><%= i %></a>
                 <% } %>
             <% } %>

@@ -121,6 +121,11 @@ main {
     margin-bottom: 1%;
 }
 
+.spacer {
+    height: 10px;
+    width: 100%;
+}
+
 body {
     margin: 0;
   }
