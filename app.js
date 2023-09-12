@@ -1,8 +1,10 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 var logger = require('morgan');
+const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -14,6 +16,7 @@ var racletteRouter = require('./routes/raclette');
 var videoprojecteurRouter = require('./routes/videoprojecteur');
 var associationRouter = require('./routes/association');
 var wikiRouter = require('./routes/wiki');
+var loginRouter = require('./routes/login')
 
 
 var app = express();
@@ -27,6 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -38,9 +42,19 @@ app.use('/raclette', racletteRouter);
 app.use('/videoprojecteur', videoprojecteurRouter);
 app.use('/association', associationRouter);
 app.use('/wiki', wikiRouter);
+app.use('/login', loginRouter)
 
 
+const sessionDureeMax = 1000 * 60 * 60 * 2;
 
+app.use(sessions({
+  secret: "votre_secret",
+  saveUninitialized: true,
+  cookie: { maxAge: sessionDureeMax },
+  resave: false
+}));
+//cookie parser middleware
+app.use(cookieParser())
 
 
 // catch 404 and forward to error handler
