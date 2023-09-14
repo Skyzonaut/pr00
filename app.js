@@ -17,6 +17,7 @@ var associationRouter = require('./routes/association');
 
 
 
+
 var app = express();
 
 // view engine setup
@@ -38,6 +39,7 @@ app.use('/caisse', caisseRouter);
 app.use('/raclette', racletteRouter);
 app.use('/videoprojecteur', videoprojecteurRouter);
 app.use('/association', associationRouter);
+
 
 
 
