@@ -6,15 +6,14 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var contactsRouter = require('./routes/contacts')
+var contactsRouter = require('./routes/contacts');
 var ventesRouter = require('./routes/ventes');
 var postersRouter = require('./routes/posters');
 var caisseRouter = require('./routes/caisse');
 var racletteRouter = require('./routes/raclette');
 var videoprojecteurRouter = require('./routes/videoprojecteur');
 var associationRouter = require('./routes/association');
-
-
+var wikiRouter = require('./routes/wiki');
 
 
 
@@ -39,6 +38,7 @@ app.use('/caisse', caisseRouter);
 app.use('/raclette', racletteRouter);
 app.use('/videoprojecteur', videoprojecteurRouter);
 app.use('/association', associationRouter);
+app.use('/wiki', wikiRouter);
 
 
 
