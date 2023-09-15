@@ -15,6 +15,7 @@ var videoprojecteurRouter = require('./routes/videoprojecteur');
 var associationRouter = require('./routes/association');
 var wikiRouter = require('./routes/wiki');
 var mentionsRouter = require('./routes/mentions');
+var profilRouter = require('./routes/profil');
 
 
 
@@ -41,6 +42,7 @@ app.use('/videoprojecteur', videoprojecteurRouter);
 app.use('/association', associationRouter);
 app.use('/wiki', wikiRouter);
 app.use('/mentions', mentionsRouter);
+app.use('/profil', profilRouter);
 
 
 
