@@ -83,4 +83,28 @@
     <%- include('../partials/footer'); %>
   </body>
   <script src="js/index.js"></script>
+
+  <% if(userType) { %>
+    <script>
+        const userType = <%- JSON.stringify(userType) %>;
+
+        switch (userType) {
+          case 'null':
+            $('.unlogged').css('display','block');
+            $('.logged').css('display', 'none');
+            $('.admin').css('display', 'none');
+            break;
+          case 'admin':
+            $('.unlogged').css('display','none');
+            $('.logged').css('display', 'block');
+            $('.admin').css('display', 'block');
+            break;
+          case 'user': 
+            $('.unlogged').css('display','none');
+            $('.logged').css('display', 'block');
+            $('.admin').css('display', 'none');
+            break;
+        }
+    </script>
+  <% } %>
 </html>

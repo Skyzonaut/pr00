@@ -78,6 +78,14 @@ a {
     border-bottom: solid 2px rgb(53, 53, 53);
 }
 
+.logged {
+    display: none;
+}
+
+.admin {
+    display: none;
+}
+
 /* MAIN */
 
 main {

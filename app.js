@@ -6,6 +6,7 @@ const sessions = require('express-session');
 var logger = require('morgan');
 const cors = require('cors');
 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var contactsRouter = require('./routes/contacts');
@@ -32,6 +33,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
+const sessionDureeMax = 1000 * 60 * 60 * 2;
+
+app.use(sessions({
+  secret: "votre_secret",
+  saveUninitialized: false,
+  cookie: { maxAge: sessionDureeMax },
+  resave: false
+}));
+//cookie parser middleware
+app.use(cookieParser())
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/contacts', contactsRouter);
@@ -45,17 +57,6 @@ app.use('/wiki', wikiRouter);
 app.use('/login', loginRouter)
 
 
-const sessionDureeMax = 1000 * 60 * 60 * 2;
-
-app.use(sessions({
-  secret: "votre_secret",
-  saveUninitialized: true,
-  cookie: { maxAge: sessionDureeMax },
-  resave: false
-}));
-//cookie parser middleware
-app.use(cookieParser())
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -67,6 +68,9 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  //define base userType
+  res.locals.userType = "null";
 
   // render the error page
   res.status(err.status || 500);
