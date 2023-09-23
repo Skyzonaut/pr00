@@ -3,7 +3,13 @@ var router = express.Router();
 var wikiModel = require('../model/wiki.js')
 
 router.get('/', function(req, res, next) {
-    wikiModel.readAll(function(result) {
+    wikiModel.summary(function(result) {
+        res.render('wiki-summary', { title: "Wiki Sommaire", content: result });
+    })
+});
+
+router.get('/page/:page', function(req, res, next) {
+    wikiModel.readPage(req.params.page,function(result) {
         res.render('wiki', { title: "Wiki", content: result });
     })
 });
