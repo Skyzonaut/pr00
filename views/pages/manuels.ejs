@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title><%= title %></title>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/stylesheets/css/ventes.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+<%- include('../partials/header', title='Manuels'); %>
+<main>
+    <h1 style="text-align: center">Notre Catalogue</h1>
+    <hr>
+    <!-- link section -->
+        <div class="wrapper">
+            <% if(error === false && manuels.length !== 0) {%>
+                <% manuels.forEach((item)=> { %>
+                    <div class="box service">
+                        <div class="product">
+                            <span class="name" style="font-weight: bold"><%= item.uv %></span>
+                            <%if(item.photo !== "" && item.photo !== null) {%>
+                                <img style="height: auto"
+                                     src="/images/manuelsDir/<%=item.photo%>"
+                                     onError="this.onerror=null; this.src='/images/question-mark.png'">
+                            <% } else { %>
+                                <img style="height: auto" src="/images/question-mark.png"/>
+                            <% } %>
+                            <button type="button"
+                                    style="margin-bottom:2vh;height: 4vh"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalManuelLocation"
+                                    data-id="<%=item.id%>"
+                                    data-uv="<%=item.uv%>">Louer</button>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <div>
+                    <i>Aucuns manuels n'a été trouvé </i>
+                </div>
+            <% } %>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalManuelLocation" tabindex="-1" role="dialog" aria-labelledby="titleModalLocation" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleModalLocation"></h5>
+
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" style="width: 10vw" data-bs-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" style="width: 10vw" data-bs-dismiss="modal">Confirmer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+</body>
+<script>
+    $('#modalManuelLocation').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var uv = button.data('uv')
+        var id = button.data('id')
+        var modal = $(this)
+        modal.find('.modal-title').text('Location de manuels ' + uv)
+
+    })
+</script>
