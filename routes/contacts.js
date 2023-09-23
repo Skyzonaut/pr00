@@ -19,4 +19,8 @@ router.post('/request', function (req, res, next) {
         res.redirect('/');
     });
 });
+
+router.get('/confirm', function(req, res, next) {
+    res.render("mailConfirm", {title: "Confirm"});
+});
 module.exports = router;
