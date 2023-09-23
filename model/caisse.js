@@ -36,9 +36,9 @@ module.exports = {
             })
         })
     },
-    journalVentes: function(offset) {
+    journalVentes: function() {
         return new Promise((resolve, reject) => {
-            const sql = `SELECT IDVente, Article, Quantite, DATE_FORMAT(Date,'%Y/%m/%d %H:%i:%s') as Date, Client, PrixFacture, MontantTVA, MoyenPaiement, Permanencier FROM polar_caisse_ventes LIMIT ${offset*30}, ${(offset*30)+29}`;
+            const sql = `SELECT IDVente, Article, Quantite, DATE_FORMAT(Date,'%Y/%m/%d %H:%i:%s') as Date, Client, PrixFacture, MontantTVA, MoyenPaiement, Permanencier FROM polar_caisse_ventes ORDER BY Date DESC`;
             db.query(sql, (err, results) => {
                 if(err) reject(false)
                 resolve(results)

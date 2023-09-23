@@ -13,10 +13,10 @@
                             <div class="col" id="modalMontant">0€</div>
                         </div>
                         <div class="row" style="margin-top: 2vh">
-                            <input type="radio" class="btn-check" name="optionsEC" id="espece" autocomplete="off" onchange="handleOptionEC('espece')">
+                            <input type="radio" class="btn-check" name="optionsEC" id="espece" autocomplete="off" onchange="handleOptionEC('Espèce')">
                             <label class="btn btn-outline-secondary" for="espece">Espèces</label>
 
-                            <input type="radio" class="btn-check" name="optionsEC" id="cheque" autocomplete="off" onchange="handleOptionEC('cheque')">
+                            <input type="radio" class="btn-check" name="optionsEC" id="cheque" autocomplete="off" onchange="handleOptionEC('Chèque')">
                             <label class="btn btn-outline-secondary" for="cheque">Chèques</label>
 
                         </div>
@@ -59,14 +59,14 @@
 </div>
 
 <script>
-    let type = "espece";
+    let type = "Espèce";
     function handleOptionEC(newType) {
-        if(newType === "espece") {
+        if(newType === "Espèce") {
             $("#chequeTableau").hide();
-            type = "espece";
+            type = "Espèce";
         } else {
             $("#chequeTableau").show();
-            type = "cheque";
+            type = "Chèque";
         }
     }
     $('#validerEC').click(() => {

@@ -4,7 +4,7 @@ const caisseModel = require('../model/caisse.js')
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-    caisseModel.journalVentes(0).then(resultats => {
+    caisseModel.journalVentes().then(resultats => {
         res.render("caisse", {title: "Caisse", journalInitPage: resultats});
     }).catch(err => {
         res.render("caisse", {title: "Caisse", journalInitPage: null});
