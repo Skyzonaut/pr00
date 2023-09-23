@@ -6,6 +6,7 @@
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/stylesheets/css/ventes.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="/js/manuels.js"></script>
 </head>
 <body>
 <%- include('../partials/header', title='Manuels'); %>
@@ -47,15 +48,16 @@
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="titleModalLocation"></h5>
+                        <h2 class="modal-title" id="titleModalLocation" style="letter-spacing: normal"></h2>
 
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="manuelModalContent">
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" style="width: 10vw" data-bs-dismiss="modal">Annuler</button>
-                        <button type="button" class="btn btn-primary" style="width: 10vw" data-bs-dismiss="modal">Confirmer</button>
+                        <button id="annulerManuel" type="button" class="btn btn-secondary" style="width: 10vw" data-bs-dismiss="modal">Annuler</button>
+                        <button id="confirmerManuel" type="button" class="btn btn-primary" style="width: 10vw">Confirmer</button>
+                        <button id="fermerManuel" type="button" class="btn btn-primary" style="width: 10vw; display: none" data-bs-dismiss="modal">Fermer</button>
                     </div>
                 </div>
             </div>
@@ -69,6 +71,75 @@
         var id = button.data('id')
         var modal = $(this)
         modal.find('.modal-title').text('Location de manuels ' + uv)
+        fetch("/manuels/location/"+id, {
+            headers: {
+                'Accept': 'text/html',
+                'Content-Type': 'text/html'
+            },
+            method: "GET"
+        })
+            .then((response) => {
+            if(response.ok) {
+                return response.json();
+            } else {
+               throw new Error(response.err);
+            }
+        })
+            .then(results => {
+            if(results) {
+                $("#manuelModalContent").html("<div style='font-size: 1.5em'>Des manuels sont <b style='color:green'>disponibles</b>," +
+                    " cliquez sur <i style='color:blue'>Confirmer</i> pour valider l'emprunt.<br>" +
+                    "Vous pourrez aller les récupérer directement au Polar. <br>Et vous devrez les y retourner" +
+                    " dans un maximum de <b>deux semaines</b>.</div>")
+                $("#confirmerManuel").show();
+                $("#annulerManuel").show();
+                $("#fermerManuel").hide();
+            } else {
+                $("#manuelModalContent").html("<div style='font-size: 1.5em'>Aucun manuels pour cet UV n'est actuellement" +
+                    " disponible.</div>")
+                $("#confirmerManuel").hide();
+                $("#annulerManuel").show();
+                $("#fermerManuel").show();
+            }
+        })
+            .catch((err) => {
+            $("#manuelModalContent").html("<div>Une erreur est survenue. Veuillez contacter" +
+                " le polar!</div>")
+            $("#confirmerManuel").hide();
+            $("#annulerManuel").hide();
+            $("#fermerManuel").show();
+        })
 
+        $("#confirmerManuel").click(() => {
+            fetch("/manuels/location/valider/", {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify({id: id})
+            })
+            .then(response => {
+                if(!response.ok) throw new Error(response.err)
+                return response.json();
+            })
+            .then(numero => {
+                $("#manuelModalContent").html("<div style='font-size: 1.5em'>Votre manuel a été réservé" +
+                    " avec succès.<br>Le manuel prêté porte le <b>Numero</b> <b style='color: red'>" + numero[0].Numero +
+                    "</b>.</div>")
+                $("#confirmerManuel").hide();
+                $("#annulerManuel").hide();
+                $("#fermerManuel").show();
+            })
+            .catch(err => {
+
+                $("#manuelModalContent").html("<div style='font-size: 1.5em'><b style='color: red;'>" +
+                    "Une erreur est survenue? Votre manuel n'a pas pu être réservé</b>" +
+                    "<br>Veuillez contacter le Polar.</div>")
+                $("#confirmerManuel").hide();
+                $("#annulerManuel").hide();
+                $("#fermerManuel").show();
+            })
+        })
     })
 </script>

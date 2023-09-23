@@ -1,3 +1,0 @@
-function verifierDispoManuels(id) {
-    fetch()
-}
