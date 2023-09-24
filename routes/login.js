@@ -12,17 +12,16 @@ router.post('/check', function(req, res) {
 
     result = userModel.read(data.username, data.pswd, function (result) {
 
-        if(result.userType === "admin") {
+        if(result[0].user_type === "admin") {
             req.session.userType = 'admin';
         }
-        else if(result.userType === "user") {
+        else if(result[0].user_type === "user") {
             req.session.userType = 'user';
         }
         req.session.username = data.username;
         req.session.pswd = data.pswd;
-        res.locals.userType = req.session.userType;
-        return res.redirect('/');
 
+        return res.redirect('/');
     });
 });
 
