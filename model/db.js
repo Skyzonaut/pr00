@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-var fs = require("fs");
+const fs = require("fs");
 var pool = mysql.createPool({
 host: "polardb.mysql.database.azure.com", //ou localhost
 user: "polar_admin",
