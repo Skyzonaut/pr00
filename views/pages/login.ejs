@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title><%= title %></title>
+  <%- include('../partials/head'); %>
+  <link rel='stylesheet' href='/stylesheets/css/index.css' />
+</head>
+  <body>
+    <%- include('../partials/header', title='Accueil'); %>
+
+    <main>
+
+        <div class="main-container">
+            <h2>Connexion</h2>
+            <form action="/login/check" method="POST">
+                <div class="mb-3 mt-3">
+                    <label for="username">Nom d'utilisateur  </label>
+                    <input type="username" class="form-control" id="username" placeholder="Entrez votre nom d'utilisateur..." name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="pswd">Mot de passe  </label>
+                    <input type="pswd" class="form-control" id="pswd" placeholder="Entrer un mot de passe..." name="pswd">
+                </div>
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                    
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+            </form>
+        </div>
+
+    </main>
+
+    <%- include('../partials/footer'); %>
+  </body>
+</html>

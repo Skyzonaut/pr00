@@ -1,8 +1,10 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 var logger = require('morgan');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const http = require("http");
 
@@ -16,6 +18,7 @@ var racletteRouter = require('./routes/raclette');
 var videoprojecteurRouter = require('./routes/videoprojecteur');
 var associationRouter = require('./routes/association');
 var wikiRouter = require('./routes/wiki');
+var loginRouter = require('./routes/login')
 var manuelsRouter = require('./routes/manuels');
 var mentionsRouter = require('./routes/mentions');
 var profilRouter = require('./routes/profil');
@@ -32,6 +35,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
+
+const sessionDureeMax = 1000 * 60 * 60 * 2;
+
+app.use(sessions({
+  secret: "votre_secret",
+  saveUninitialized: false,
+  cookie: { maxAge: sessionDureeMax },
+  resave: false
+}));
+//cookie parser middleware
+app.use(cookieParser())
 app.use(bodyParser.json());
 
 app.use('/', indexRouter);
@@ -44,11 +59,10 @@ app.use('/raclette', racletteRouter);
 app.use('/videoprojecteur', videoprojecteurRouter);
 app.use('/association', associationRouter);
 app.use('/wiki', wikiRouter);
+app.use('/login', loginRouter)
 app.use('/mentions', mentionsRouter);
 app.use('/profil', profilRouter)
 app.use('/manuels', manuelsRouter)
-
-
 
 
 
@@ -62,6 +76,9 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  //define base userType
+  res.locals.userType = "null";
 
   // render the error page
   res.status(err.status || 500);

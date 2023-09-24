@@ -4,7 +4,7 @@ var wikiModel = require('../model/wiki.js')
 
 router.get('/', function(req, res, next) {
     wikiModel.summary(function(result) {
-        res.render('wiki-summary', { title: "Wiki Sommaire", content: result });
+        res.render('wiki-summary', { title: "Wiki Sommaire", content: result, userType: req.session.userType });
     })
 });
 
