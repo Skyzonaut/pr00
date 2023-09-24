@@ -5,6 +5,6 @@ host: "polardb.mysql.database.azure.com", //ou localhost
 user: "polar_admin",
 password: "P@ssword",
 database: "pr00",
-ssl:{ca:fs.readFileSync("{ca-cert filename}")}
+ssl:{ca:fs.readFileSync("../DigiCertGlobalRootCA.crt.pem")}
 });
 module.exports = pool;  
