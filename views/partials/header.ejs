@@ -15,8 +15,8 @@
           <li class="nav-item">
             <div class="separator"></div>
           </li>
-            <% if(session.userType === "admin") { %>
-            <li class="nav-item hov admin">
+            <% if(session.userType === 'admin') { %>
+            <li class="nav-item hov ">
               <a class="f-f nav-link" aria-current="page" href="/caisse/">Caisse</a>
             </li>
             <% } %>
@@ -42,7 +42,7 @@
                 <li><a class="dropdown-item" href="/manuels">Manuels</a></li>
             </ul>
             </li>
-            <% if(session.userType === "admin") { %>
+            <% if(session.userType === 'admin') { %>
             <li class="nav-item hov">
                 <a class="nav-link el-wiki" href="/wiki">Wiki</a>
             </li>
@@ -54,9 +54,11 @@
             <div class="separator"></div>
           </li>
           <li class="nav-item dropdown hov unlogged">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <% if(session.username === undefined) {%>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMeuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Connexion
             </a>
+            <% } %>
             <ul class="dropdown-menu hov" aria-labelledby="navbarDropdownMenuLink">
                 <li><a class="dropdown-item" href="/login">Connexion CAS</a></li>
                 <li><a class="dropdown-item" href="/login">Extérieur</a></li>
