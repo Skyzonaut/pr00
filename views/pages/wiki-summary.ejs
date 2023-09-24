@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title><%= title %></title>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/stylesheets/css/wiki.css">
+</head>
+<body>
+<%- include('../partials/header', title='Wiki Sommaire'); %>
+<main>
+    <h1>Wiki</h1>
+    <nav>
+        <ul>
+            <% content.forEach((item) => { %>
+                <li><a href="/wiki/page/<%=item.Page%>"><%=item.Page%>. <%=item.Titre%></a></li>
+            <% }) %>
+        </ul>
+    </nav>
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    $('.edit').on('click', function() {
+        var p = $(this).parent().siblings('p')
+        if(p.attr('contentEditable')) {
+            p.removeAttr('contentEditable')
+        } else {
+            p.attr('contentEditable',true)
+        }
+        $(this).siblings('.valid').toggleClass("hidden");
+    })
+
+    $('.valid').on('click', function() {
+        $.post("wiki/update",
+            {
+                content: $(this).parent().siblings('p').text(),
+                title: $(this).parent().siblings('h3').text()
+            },
+            function() {
+                location.reload(true);
+            });
+
+        $(this).toggleClass("hidden");
+        $(this).parent().siblings('p').removeAttr('contentEditable')
+    })
+</script>
+</body>
+
+</html>

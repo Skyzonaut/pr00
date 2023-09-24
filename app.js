@@ -5,7 +5,8 @@ const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 var logger = require('morgan');
 const cors = require('cors');
-
+const bodyParser = require('body-parser');
+const http = require("http");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,6 +19,9 @@ var videoprojecteurRouter = require('./routes/videoprojecteur');
 var associationRouter = require('./routes/association');
 var wikiRouter = require('./routes/wiki');
 var loginRouter = require('./routes/login')
+var manuelsRouter = require('./routes/manuels');
+var mentionsRouter = require('./routes/mentions');
+var profilRouter = require('./routes/profil');
 
 
 var app = express();
@@ -43,6 +47,7 @@ app.use(sessions({
 }));
 //cookie parser middleware
 app.use(cookieParser())
+app.use(bodyParser.json());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -55,6 +60,9 @@ app.use('/videoprojecteur', videoprojecteurRouter);
 app.use('/association', associationRouter);
 app.use('/wiki', wikiRouter);
 app.use('/login', loginRouter)
+app.use('/mentions', mentionsRouter);
+app.use('/profil', profilRouter)
+app.use('/manuels', manuelsRouter)
 
 
 

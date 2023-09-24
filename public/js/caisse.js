@@ -50,13 +50,13 @@
 //     }
 // }
 
-const listArticles = fetch("/caisse/articles/")
+/*const listArticles = fetch("/caisse/articles/")
     .then(response => {
         console.log(response)
     })
     .catch(err => {
         console.log(err)
-    })
+    })*/
 
 function calculerTotal() {
     const body = $("#table-article-caisse > tbody");
@@ -64,8 +64,14 @@ function calculerTotal() {
     body.children().each(function(i) {
         total += parseFloat($(this).children().last().children()[0].innerHTML.split(' '[0]))
     })
-    console.log(total)
-    $("#prix-total-caisse")[0].innerHTML = total + " €";
+    $("#prix-total-caisse")[0].innerHTML = total.toFixed(2) + " €";
+    if(total != 0) {
+        $("#modalMontant").text(total.toFixed(2) + "€");
+    }
+    else {
+        $("#modalMontant").text("0€");
+    }
+
 }
 function calculerSousTotal(el) {
     const tr = $(el).parent().parent();
@@ -73,10 +79,10 @@ function calculerSousTotal(el) {
     const qte = tr.children().eq(2).children().eq(0)[0].value;
     const prix = tr.children().eq(3).children().eq(0)[0].value;
     if(qte !== "" && prix !== "") {
-        sousTotal.innerHTML = `${parseFloat(qte) * parseFloat(prix)} €`;
+        sousTotal.innerHTML = `${(parseFloat(qte) * parseFloat(prix)).toFixed(2)}`;
     }
     else {
-        sousTotal.innerHTML = `0 €`;
+        sousTotal.innerHTML = `0`;
     }
     calculerTotal();
 }
@@ -84,13 +90,14 @@ function calculerSousTotal(el) {
 let nbLigne = 0;
 
 function creerLigne() {
+    const table = $("#table-article-caisse > tbody");
     const tr = $(`<tr id="tr-${nbLigne}"></tr>`)
         .append($(`<td><input class="input-tableau-caisse" id="code-${nbLigne}" type="text"/></td>`))
         .append($(`<td><input class="input-tableau-caisse" id="nom-${nbLigne}" type="text"/></td>`))
         .append($(`<td><input class="input-tableau-caisse" id="qte-${nbLigne}" onchange="calculerSousTotal(this)" type="number"/></td>`))
         .append($(`<td><input class="input-tableau-caisse" id="prix-${nbLigne}" onchange="calculerSousTotal(this)" type="number" step="0.01"/></td>`))
-        .append($(`<td><div id="sous-total-${nbLigne}">0 €</div></td>`));
-    $("#table-article-caisse > tbody").append(tr);
+        .append($(`<td><span id="sous-total-${nbLigne}">0</span><span> €</span></td>`));
+    table.append(tr);
 }
 
 function ajouterLigne(event) {
@@ -111,6 +118,36 @@ function supprimerLigne(event) {
             creerLigne()
         }
     }
+}
+
+function payerEC(el, type) {
+    const body = {
+        article: $(el).children().eq(0).find("input").val(),
+        quantite: $(el).children().eq(2).find("input").val(),
+        client: $("#emetteurEC").val(),
+        prix: $(el).children().eq(4).find("span[id^='sous-total-']").text(),
+        moyenPairement: type,
+        permanencier: 1,
+    }
+    fetch("/caisse/vente", {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify(body)
+    }).then((response) => console.log(response))
+        .catch((err) => console.log(err));
+}
+
+function journalVentes(offset) {
+    fetch("/caisse/journal/"+offset, {
+        headers: {
+            'Accept': 'text/html',
+            'Content-Type': 'text/html'
+        },
+        method: "GET"
+    }).then((res) => {return res}).catch((err) => {return null});
 }
 
 

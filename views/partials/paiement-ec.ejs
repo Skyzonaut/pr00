@@ -1,0 +1,79 @@
+<!-- Modal -->
+<div class="modal fade" id="modalPaiementEC" tabindex="-1" role="dialog" aria-labelledby="modalPaiementECTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalPaimentECTitle">Espèces / Chèques</h5>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">Montant à payer : </div>
+                            <div class="col" id="modalMontant">0€</div>
+                        </div>
+                        <div class="row" style="margin-top: 2vh">
+                            <input type="radio" class="btn-check" name="optionsEC" id="espece" autocomplete="off" onchange="handleOptionEC('Espèce')">
+                            <label class="btn btn-outline-secondary" for="espece">Espèces</label>
+
+                            <input type="radio" class="btn-check" name="optionsEC" id="cheque" autocomplete="off" onchange="handleOptionEC('Chèque')">
+                            <label class="btn btn-outline-secondary" for="cheque">Chèques</label>
+
+                        </div>
+                        <div class="row" style="margin-top: 2vh">
+                            <div id="chequeTableau" style="display: none">
+                                <div class="row" style="margin-bottom: 1vh;">
+                                    <label for="beneficiaireEC" style="padding:0">Emetteur</label>
+                                    <input class="form-control" id="emetteurEC" type="text"/>
+                                </div>
+
+                                <!--<div class="row" style="margin-bottom: 1vh;">
+                                    <label for="montantEC" style="padding:0">Montant</label>
+                                    <div class="input-group" style="padding: 0">
+                                        <input class="form-control" id="montantEC" type="number" step="0.01"/>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">€</span>
+                                        </div>
+                                    </div>
+                                </div>-->
+
+                                <div class="row" style="margin-bottom: 1vh;">
+                                    <label for="raisonEC" style="padding:0">Raison</label>
+                                    <input class="form-control" id="raisonEC" type="text" placeholder="Le Polar par défaut"/>
+                                </div>
+
+                                <div class="row" style="margin-bottom: 1vh;">
+                                    <label for="NuméroEC" style="padding:0">Numéro</label>
+                                    <input class="form-control" id="NuméroEC" type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-success" id="validerEC" data-bs-dismiss="modal">Valider le paiement</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let type = "Espèce";
+    function handleOptionEC(newType) {
+        if(newType === "Espèce") {
+            $("#chequeTableau").hide();
+            type = "Espèce";
+        } else {
+            $("#chequeTableau").show();
+            type = "Chèque";
+        }
+    }
+    $('#validerEC').click(() => {
+        for(var el of $("#table-article-caisse tbody tr")) {
+            payerEC(el, type);
+        }
+        $("#table-article-caisse tbody tr").remove();
+        creerLigne();
+    })
+</script>
