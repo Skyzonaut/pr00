@@ -19,16 +19,8 @@
 <%- include('../partials/paiement-payutc') %>
 <%- include('../partials/journal-ventes', journalInitPage=journalInitPage) %>
 <main>
-    <div id="main-caisse-container>
+    <div id="main-caisse-container">
         <h1><%= title %></h1>
-<!--        <button-->
-<!--                class="btn btn-outline-secondary"-->
-<!--                type="button" data-bs-toggle="offcanvas"-->
-<!--                data-bs-target="#calculettePartial"-->
-<!--                aria-controls="calculettePartial"-->
-<!--                style="height: 6.5vh">-->
-<!--            Calculatrice-->
-<!--        </button>-->
     </div>
     <div class="caisse-page-container" id="tableau-caisse" onkeydown="ajouterLigne(event);supprimerLigne(event)">
         <table class="table" id="table-article-caisse">
@@ -71,8 +63,8 @@
                 <hr>
                 <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#modalPaiementPayUTC">Solde PayUTC</button>
                 <hr>
-                <button class="btn btn-success">Imprimer Facture</button>
                 <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#modalJournalVentes">Journal des Ventes</button>
+                <a class="btn btn-success" href="/caisse/export">Imprimer Journal</a>
             </div>
         </div>
     </div>
