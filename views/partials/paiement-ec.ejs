@@ -23,8 +23,8 @@
                         <div class="row" style="margin-top: 2vh">
                             <div id="chequeTableau" style="display: none">
                                 <div class="row" style="margin-bottom: 1vh;">
-                                    <label for="beneficiaireEC" style="padding:0">Emetteur</label>
-                                    <input class="form-control" id="emetteurEC" type="text"/>
+                                    <label for="emetteurC" style="padding:0">Emetteur</label>
+                                    <input class="form-control" id="emetteurC" type="text"/>
                                 </div>
 
                                 <!--<div class="row" style="margin-bottom: 1vh;">
@@ -47,6 +47,13 @@
                                     <input class="form-control" id="NuméroEC" type="text"/>
                                 </div>
                             </div>
+
+                            <div id="especeTableau" style="display: none">
+                                <div class="row" style="margin-bottom: 1vh;">
+                                    <label for="emetteurE" style="padding:0">Emetteur</label>
+                                    <input class="form-control" id="emetteurE" type="text"/>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <button class="btn btn-success" id="validerEC" data-bs-dismiss="modal">Valider le paiement</button>
@@ -63,9 +70,11 @@
     function handleOptionEC(newType) {
         if(newType === "Espèce") {
             $("#chequeTableau").hide();
+            $("#especeTableau").show();
             type = "Espèce";
         } else {
             $("#chequeTableau").show();
+            $("#especeTableau").hide();
             type = "Chèque";
         }
     }
@@ -74,6 +83,7 @@
             payerEC(el, type);
         }
         $("#table-article-caisse tbody tr").remove();
+        $("#prix-total-caisse").text("0");
         creerLigne();
     })
 </script>

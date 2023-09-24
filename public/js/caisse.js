@@ -64,12 +64,12 @@ function calculerTotal() {
     body.children().each(function(i) {
         total += parseFloat($(this).children().last().children()[0].innerHTML.split(' '[0]))
     })
-    $("#prix-total-caisse")[0].innerHTML = total.toFixed(2) + " €";
+    $("#prix-total-caisse")[0].innerHTML = total.toFixed(2);
     if(total != 0) {
-        $("#modalMontant").text(total.toFixed(2) + "€");
+        $("#modalMontant").text(total.toFixed(2));
     }
     else {
-        $("#modalMontant").text("0€");
+        $("#modalMontant").text("0");
     }
 
 }
@@ -121,14 +121,20 @@ function supprimerLigne(event) {
 }
 
 function payerEC(el, type) {
-    const body = {
+    let body = {
         article: $(el).children().eq(0).find("input").val(),
         quantite: $(el).children().eq(2).find("input").val(),
-        client: $("#emetteurEC").val(),
+        client: "",
         prix: $(el).children().eq(4).find("span[id^='sous-total-']").text(),
         moyenPairement: type,
         permanencier: 1,
     }
+    body.moyenPairement === "Espèce"
+        ? body.client = $("#emetteurE").val()
+        : body.client = $("#emetteurC").val()
+
+    if(body.client === undefined) body.client = "Anonyme";
+
     fetch("/caisse/vente", {
         headers: {
             'Accept': 'application/json',
