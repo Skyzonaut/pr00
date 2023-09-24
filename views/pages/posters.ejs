@@ -6,7 +6,6 @@
     <title><%= title %></title>
     <%- include('../partials/head'); %>
     <link rel="stylesheet" href="/stylesheets/css/posters.css">
-    <link rel='stylesheet' href='/stylesheets/css/index.css' />
 </head>
 <body>
 <%- include('../partials/header', title='Posters'); %>
@@ -104,6 +103,11 @@
         </form>
       </div>
 </main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+  $('.el-services').addClass('active');
+</script>
+          
 <%- include('../partials/footer'); %>
 </body>
 </html>

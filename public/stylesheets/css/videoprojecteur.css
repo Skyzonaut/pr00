@@ -1,3 +1,14 @@
+/* FONT */
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
 /* NAVBAR */
 
 .navbar-brand {
@@ -65,6 +76,14 @@
 
 .active {
     border-bottom: solid 2px rgb(53, 53, 53);
+}
+
+.logged {
+    display: none;
+}
+
+.admin {
+    display: none;
 }
 
 /* MAIN */

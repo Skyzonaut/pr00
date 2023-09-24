@@ -1,82 +1,109 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.manage-orga-btns > span {
+  padding: 0.6rem;
+  border: 2px solid ;
+  border-radius: 10px;
+  cursor: pointer;
+  color: black;
+  font-size: smaller;
+}
+
+.manage-orga-btns {
+  margin-bottom: 0.5rem;
+}
   
-  body {
-  }
-  
-  .manage-orga-btns > span {
-    padding: 0.6rem;
-    border: 2px solid ;
-    border-radius: 10px;
-    cursor: pointer;
-    color: black;
-    font-size: smaller;
-  }
-  
-  .manage-orga-btns {
-    margin-bottom: 0.5rem;
-  }
-  
-  .navbar-brand {
+ /* FONT */
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* NAVBAR */
+
+.navbar-brand {
     font-weight: bold;
     font-style: italic;
     font-size: 20px;
-    width: -moz-fit-content;
     width: fit-content;
-  }
-  
-  .navbar-brand > img {
-    height: 7%;
-    width: 7%;
+    padding-bottom: 0;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.navbar-brand > img {
+
+    width: 70px;
     margin-right: 10px;
-  }
-  
-  .navbar {
+}
+
+.navbar {
     box-shadow: 0px 2px 3px lightgray;
-  }
-  
-  .navbar-collapse {
-    flex-grow: 0 !important;
-  }
-  
-  .navbar-main-spacer {
+    padding-bottom: 0;
+}
+
+.navbar-collapse {
+    flex-grow: 0 !important; 
+}
+
+.navbar-main-spacer {
     padding: 20px;
     margin-left: 15%;
     margin-right: 15%;
-  }
-  
-  .hov:hover {
-    background-color: rgb(243, 209, 157);
-  }
-  
-  .nav-item > a {
-    font-size: 0.85rem;
-  }
-  
-  .login-item {
+}
+
+.hov:hover {
+    color: black;
+}
+
+.nav-item > a {
+    font-size: 0.95rem;
+}
+
+.login-item {
     border-radius: 10px;
     margin-right: 2px;
-  }
-  
-  .account-item {
-    border-radius: 10px;
-  }
-  
-  .separator {
+}
+
+.separator {
     border: 1px solid rgb(204, 204, 204);
     width: 1px;
     height: 33px;
     margin-left: 1rem;
     margin-right: 1rem;
-  }
-  
-  .admin {
+}
+
+.el-accueil {
     font-weight: bolder;
-  }
+    margin: 0;
+}
+
+.hov:hover {
+    border-bottom: solid 2px rgb(53, 53, 53);
+}
+
+.active {
+    border-bottom: solid 2px rgb(53, 53, 53);
+}
+
+.logged {
+    display: none;
+}
+
+.admin {
+    display: none;
+}
   
   .wrapper {
     max-width: 800px;
