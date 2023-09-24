@@ -3,7 +3,7 @@ var router = express.Router();
 var associationModel = require('../model/association.js')
 
 router.get('/', function(req, res, next) {
-    res.render("association", {title: "Association"});
+    res.render("association", {session: req.session, title: "Association"});
 });
 
 router.post('/request', function (req, res, next) {

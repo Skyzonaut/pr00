@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
-<%- include('../partials/header', title='Ventes'); %>
+<%- include('../partials/header', title='Ventes', session=session); %>
 <main>
     <h1>Notre Catalogue</h1>
     <hr>
@@ -123,31 +123,6 @@
     <% if(items) { %>
         <script>
             const itemList = <%- JSON.stringify(items) %>;
-        </script>
-    <% } %>
-
-    <% if(userType) { %>
-        <script>
-            const userType = <%- JSON.stringify(userType) %>;
-    
-            switch (userType) {
-              case 'null':
-                $('.unlogged').css('display','block');
-                $('.logged').css('display', 'none');
-                $('.admin').css('display', 'none');
-                break;
-              case 'admin':
-                $('.unlogged').css('display','none');
-                $('.logged').css('display', 'block');
-                $('.admin').css('display', 'block');
-                break;
-              case 'user': 
-                $('.unlogged').css('display','none');
-                $('.logged').css('display', 'block');
-                $('.admin').css('display', 'none');
-                break;
-            }
-    
         </script>
     <% } %>
 </body>

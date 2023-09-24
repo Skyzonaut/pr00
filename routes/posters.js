@@ -3,7 +3,7 @@ var router = express.Router();
 var postersModel = require('../model/posters.js')
 
 router.get('/', function(req, res, next) {
-    res.render("posters", {title: "Posters"});
+    res.render("posters", {session: req.session,title: "Posters"});
 });
 
 router.post('/request', function (req, res, next) {

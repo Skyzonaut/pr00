@@ -6,7 +6,6 @@ const sessions = require('express-session');
 var logger = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const http = require("http");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -78,7 +77,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   //define base userType
-  res.locals.userType = "null";
+  res.locals.userType = "user";
 
   // render the error page
   res.status(err.status || 500);

@@ -8,7 +8,7 @@
 </head>
 
     <body>
-    <%- include('../partials/header', title='Wiki'); %>
+    <%- include('../partials/header', title='Wiki', session=session); %>
         <main>
             <h1>Wiki</h1>
             <% content.forEach((item)=> { %>
@@ -55,32 +55,6 @@
             })
         </script>
 
-        <% if(userType) { %>
-            <script>
-                const userType = <%- JSON.stringify(userType) %>;
-
-                switch (userType) {
-                case 'null':
-                    $('.unlogged').css('display','block');
-                    $('.logged').css('display', 'none');
-                    $('.admin').css('display', 'none');
-                    break;
-                case 'admin':
-                    $('.unlogged').css('display','none');
-                    $('.logged').css('display', 'block');
-                    $('.admin').css('display', 'block');
-                    $('.admin-btn').css('display','block');
-                    break;
-                case 'user': 
-                    $('.unlogged').css('display','none');
-                    $('.logged').css('display', 'block');
-                    $('.admin').css('display', 'none');
-                    break;
-                }
-
-                
-            </script>
-        <% } %>
     </body>
  
 </html>

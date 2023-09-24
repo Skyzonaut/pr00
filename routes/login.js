@@ -4,13 +4,13 @@ var userModel = require('../model/user.js');
 
 
 router.get('/', function(req, res, next) {
-    res.render('login', { title: 'Login' })
+    res.render('login', {session: req.session, title: 'Login' })
 })
 
 router.post('/check', function(req, res) {
     var data = req.body
 
-    result = userModel.read(data.username, data.pswd, function (result) {
+    userModel.read(data.username, data.pswd, function (result) {
 
         if(result[0].user_type === "admin") {
             req.session.userType = 'admin';

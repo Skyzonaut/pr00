@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var manuelsModel = require('../model/manuels.js')
+
 const {response} = require("express");
 
 router.get("/", function(req, res) {
+    let userType = req.session.userType;
     manuelsModel.getManuels().then((resultats) => {
-        res.render("manuels", {title: "Manuels", manuels: resultats, error: false});
+        res.render("manuels", {session: req.session, title: "Manuels", manuels: resultats, error: false});
     }).catch((err) => {
-        res.render("manuels", {title: "Manuels", manuels: [], error: true});
+        res.render("manuels", {session: req.session, title: "Manuels", manuels: [], error: true});
     })
 });
 

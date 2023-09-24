@@ -4,7 +4,7 @@ var contactsModel = require('../model/contacts.js')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render("contacts", {title: "Contacts"});
+    res.render("contacts", {session: req.session, title: "Contacts"});
 });
 
 
@@ -21,6 +21,6 @@ router.post('/request', function (req, res, next) {
 });
 
 router.get('/confirm', function(req, res, next) {
-    res.render("mailConfirm", {title: "Confirm"});
+    res.render("mailConfirm", {session: req.session, title: "Confirm"});
 });
 module.exports = router;
