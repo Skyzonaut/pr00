@@ -7,6 +7,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/confirm', function(req, res, next) {
-    res.render("reservationConfirm", {title: "Confirm", content: "raclette"});
+    res.render("reservationConfirm", {session: req.session, title: "Confirm", content: "raclette"});
 });
 module.exports = router;
